@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Mahasiswa {
 	
@@ -9,8 +10,15 @@ public class Mahasiswa {
 			System.out.println("1. Input");
 			System.out.println("2. View");
 			System.out.println("3. Delete");
-			System.out.println("4. Delete dengan nama");
-			System.out.println("5. Exit");
+			System.out.println("4. Delete dengan nama mahasiswa");
+			System.out.println("5. Update dengan nama matkul");
+			System.out.println("6. Exit");
+	}
+	
+	void menuUpdate()
+	{
+			System.out.println("1. Nama Mahasiswa");
+			System.out.println("2. Nilai Matkul Mahasiswa");
 	}
 	
 	public void tambahData(Mahasiswa daftar, int npmMhs, String nmMhs, double[] ntsMhs, double[] nasMhs) 
@@ -49,15 +57,9 @@ public class Mahasiswa {
 				
 				lihatData.nilaiAkhir[i] = (lihatData.nilaiEts[i] + lihatData.nilaiEas[i])/2;
 				System.out.println("Nilai Akhir : " + lihatData.nilaiAkhir[i]);
-//				System.out.println("Nilai Akhir : " + sum);
-//				sum += lihatData.nilaiAkhir[i];
 				
 			}
-			
-//			System.out.println("Nilai akhir : " + (sum/4));
 			System.out.println("\n");
-			
-			
 			lihatData = lihatData.next;
 		}
 	
@@ -66,9 +68,64 @@ public class Mahasiswa {
 	//	Tambahan Aslab
 	public void updateData(Mahasiswa daftar, String nmMhs)
 	{
+		Scanner update = new Scanner(System.in);
+		Node updateData = daftar.head;
 		
+		menuUpdate();
+		System.out.println("Data mana yang mau diupdate : ");
+		int cariData = update.nextInt();
+		
+		switch(cariData)
+		{
+			case 1:
+				System.out.println("=> Update Nama Mahasiswa");
+				while (updateData != null)
+				{
+					if(updateData.namaMahasiswa.equals(nmMhs))
+					{
+						System.out.print("Update nama : ");
+						String gantiNama = update.next();
+						updateData.namaMahasiswa = gantiNama;
+					}
+					updateData = updateData.next;
+				}
+				break;
+				
+			case 2:
+				System.out.println("=> Update Nilai Mahasiswa");
+				System.out.println("\nMasukkan matkul yang dicari : ");
+				String cariMk = update.next();
+				while (updateData != null)
+				{
+					if(updateData.namaMahasiswa.equals(nmMhs))
+					{
+						for(int i = 0; i < updateData.matkulMahasiswa.length; i++)
+						{
+							if(updateData.matkulMahasiswa[i].equals(cariMk))
+							{
+									System.out.println("Update Nilai");
+									System.out.print("Nilai ETS  : ");
+									double ubahNts = update.nextDouble();
+									updateData.nilaiEts[i] = ubahNts;
+									
+									System.out.print("Nilai EAS  : ");
+									double ubahNas = update.nextDouble();
+									updateData.nilaiEas[i] = ubahNas;
+							}
+								
+						}
+					}
+					updateData = updateData.next;
+				}
+				break;
+				
+			default:
+				System.err.println("Pilihan tidak ada!");
+				break;
+		}
 	}
-
+		
+		
 	
 	public void deleteData(Mahasiswa daftar)
 	{

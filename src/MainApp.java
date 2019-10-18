@@ -12,10 +12,11 @@ public class MainApp {
 		double[] nts = new double[4];
 		double[] nas = new double[4];
 		
+		
 		Scanner input = new Scanner(System.in);
 		Mahasiswa dataMahasiswa = new Mahasiswa();
 		
-		//		LOGIN FORM
+		// LOGIN FORM
 		System.out.print("Masukkan username : ");
 		String inputUsername = input.next();
 		System.out.print("Masukkan password : ");
@@ -23,7 +24,7 @@ public class MainApp {
 
 		int count = 0;
 
-		//create while loop, set loop continuation condition to count < 3
+		// BUAT LOOP AGAR MAKS LOOP HANYA SAMPAI 2
 		while (count <= 2) {            
 
 		    if ((!inputUsername.equals("admin")) || (!inputPassword.equals("admin"))) {       
@@ -41,7 +42,7 @@ public class MainApp {
 		    count++;
 		}
 				
-		
+		// MAIN PROGRAM 
 		do
 		{
 			dataMahasiswa.menuUtama();
@@ -84,10 +85,19 @@ public class MainApp {
 					System.out.println("Masukkan nama yang akan dihapus : ");
 					cariNm = input.next();
 					dataMahasiswa.deleteDataPosition(dataMahasiswa, cariNm);
-//					dataMahasiswa.lihatData(dataMahasiswa);
+					dataMahasiswa.lihatData(dataMahasiswa);
 					break;
 					
 				case 5:
+					System.out.println("Update Data Mahasiswa :: Tambahan");
+					System.out.println("Masukkan nama mana yang akan diupdate : ");
+					cariNm = input.next();
+//					System.out.println("Masukkan matkul mana yang akan diupdate : ");
+//					String cariMk = input.next();
+					dataMahasiswa.updateData(dataMahasiswa, cariNm);
+					break;
+					
+				case 6:
 					System.err.println("Anda keluar dari program...");
 					System.exit(0);
 					break;
@@ -97,13 +107,8 @@ public class MainApp {
 	
 			}
 			
-		}while(menu < 6);
+		}while(menu < 7);
 		
-		
-		
-		
-//		data.tambahData(6941, "Muchlas", "Indo", 90, 85);
-//		data.tambahData(6940, "Danang", "Indo", 85, 80);
 		
 	}
 }
