@@ -1,4 +1,4 @@
-import java.io.IOException;
+
 import java.util.Scanner;
 
 public class MainApp {
@@ -27,14 +27,16 @@ public class MainApp {
 		// BUAT LOOP AGAR MAKS LOOP HANYA SAMPAI 2
 		while (count <= 2) {            
 
-		    if ((!inputUsername.equals("admin")) || (!inputPassword.equals("admin"))) {       
+		    if ((!inputUsername.equals("admin")) || (!inputPassword.equals("admin"))) 
+		    {       
 		        System.out.print("Login salah. Coba lagi:\n\nMasukkan username : ");
 		        inputUsername = input.next();
 
 		        System.out.print("Masukkan password : ");
 		        inputPassword = input.next();
 		    }   
-		    else {
+		    else 
+		    {
 		        System.out.println("You are now logged in");
 		        break;
 		    }            
@@ -92,8 +94,6 @@ public class MainApp {
 					System.out.println("Update Data Mahasiswa :: Tambahan");
 					System.out.println("Masukkan nama mana yang akan diupdate : ");
 					cariNm = input.next();
-//					System.out.println("Masukkan matkul mana yang akan diupdate : ");
-//					String cariMk = input.next();
 					dataMahasiswa.updateData(dataMahasiswa, cariNm);
 					break;
 					

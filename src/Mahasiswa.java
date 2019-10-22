@@ -151,10 +151,15 @@ public class Mahasiswa {
 	{
 		Node currNode = daftar.head, prevNode = null;
 		
+		
 		if(currNode != null && currNode.namaMahasiswa.equals(nmDicari))
 		{
 			daftar.head = currNode.next;
 			System.out.println(nmDicari + " nama ditemukan dan dihapus!");
+		}
+		else
+		{
+			System.out.println("Belum ada inputan");
 		}
 		
 		while(currNode != null && !currNode.namaMahasiswa.equals(nmDicari))
@@ -165,8 +170,8 @@ public class Mahasiswa {
 		
 		if(currNode != null) 
 		{
-			prevNode.next = currNode.next;
-			System.out.println(nmDicari + " nama ditemukan dan dihapus!");
+//			prevNode.next = currNode.next;
+//			System.out.println(nmDicari + " nama ditemukan dan dihapus!");
 		}
 		else
 		{
